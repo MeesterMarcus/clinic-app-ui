@@ -3,15 +3,24 @@
 <div class="container">
   <button mat-raised-button color="primary" style="margin:5px;" (click)="addPatient()">Add Patient</button>
   <div>
-    <ngx-datatable class="material"
+    <ngx-datatable class="material" style="width:80%"
       [rows]="rows"
       [loadingIndicator]="loadingIndicator"
-      [columns]="columns"
       [columnMode]="ColumnMode.force"
       headerHeight="50"
       footerHeight="50"
       rowHeight="auto"
       [reorderable]="reorderable">
+
+      <ngx-datatable-column name="First Name"></ngx-datatable-column>
+      <ngx-datatable-column name="Last Name"></ngx-datatable-column>
+      <ngx-datatable-column name="Address"></ngx-datatable-column>
+      <ngx-datatable-column name="City"></ngx-datatable-column>
+      <ngx-datatable-column name="State"></ngx-datatable-column>
+      <ngx-datatable-column name="Zip"></ngx-datatable-column>
+      <ngx-datatable-column name="Email"></ngx-datatable-column>
+      <ngx-datatable-column name="Phone"></ngx-datatable-column>
+
     </ngx-datatable>
   </div>
 </div>

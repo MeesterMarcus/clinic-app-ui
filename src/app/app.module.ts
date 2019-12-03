@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddPatientDialogComponent } from './patients/add-patient-dialog/add-patient-dialog.component';
+import {HttpClientModule} from '@angular/common/http';
+import {PatientService} from './services/patient.service';
 
 
 @NgModule({
@@ -25,9 +27,12 @@ import { AddPatientDialogComponent } from './patients/add-patient-dialog/add-pat
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PatientService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [AddPatientDialogComponent]
 })

@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import { ColumnMode} from '@swimlane/ngx-datatable';
 import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {PatientService} from '../services/patient.service';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-home',
@@ -15,26 +17,17 @@ export class PatientsComponent implements OnInit {
   ColumnMode = ColumnMode;
 
 
-  rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' },
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' }
-  ];
-  columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
+  rows: {};
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private patientService: PatientService) { }
 
   ngOnInit() {
+    this.patientService.getPatients().subscribe(
+      result => {
+        console.log(result);
+        this.rows = result;
+      }
+    );
   }
 
   addPatient(): void {
