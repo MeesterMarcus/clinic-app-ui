@@ -12,7 +12,7 @@ import {any} from 'codelyzer/util/function';
 })
 export class PatientsComponent implements OnInit {
 
-  loadingIndicator = false;
+  loadingIndicator = true;
   reorderable = true;
   ColumnMode = ColumnMode;
 
@@ -24,8 +24,8 @@ export class PatientsComponent implements OnInit {
   ngOnInit() {
     this.patientService.getPatients().subscribe(
       result => {
-        console.log(result);
         this.rows = result;
+        this.loadingIndicator = false;
       }
     );
   }
