@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { ColumnMode} from '@swimlane/ngx-datatable';
+import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog.component';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './patients.component.html',
+  styleUrls: ['./patients.component.css']
 })
-export class HomeComponent implements OnInit {
+export class PatientsComponent implements OnInit {
 
   loadingIndicator = false;
   reorderable = true;
@@ -30,13 +32,21 @@ export class HomeComponent implements OnInit {
     { name: 'Company' }
   ];
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  addPatient() {
-    console.log('adding patient...');
+  addPatient(): void {
+    const dialogRef = this.dialog.open(AddPatientDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 
 }
