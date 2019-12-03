@@ -1,5 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-patient-dialog',
@@ -8,7 +10,19 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 })
 export class AddPatientDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>) { }
+  patientForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    address: new FormControl(''),
+    city: new FormControl(''),
+    state: new FormControl(''),
+    zip: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl('')
+  });
+
+  constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>) {
+  }
 
   ngOnInit() {
   }
@@ -19,6 +33,10 @@ export class AddPatientDialogComponent implements OnInit {
 
   closeDialog(): void {
     this.dialogRef.close();
+  }
+
+  onSubmit() {
+    console.log(this.patientForm.value);
   }
 
 }

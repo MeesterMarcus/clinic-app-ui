@@ -11,6 +11,10 @@
   width: 50%;
 }
 
+.quarter-width {
+  width: 25%;
+}
+
 td {
   padding-right: 8px;
 }
