@@ -37,6 +37,7 @@ export class AddPatientDialogComponent implements OnInit {
 
   onSubmit() {
     console.log(this.patientForm.value);
+    this.dialogRef.close();
   }
 
 }
