@@ -22,12 +22,7 @@ export class PatientsComponent implements OnInit {
   constructor(public dialog: MatDialog, private patientService: PatientService) { }
 
   ngOnInit() {
-    this.patientService.getPatients().subscribe(
-      result => {
-        this.rows = result;
-        this.loadingIndicator = false;
-      }
-    );
+    this.getPatients();
   }
 
   addPatient(): void {
@@ -37,8 +32,18 @@ export class PatientsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
+      this.loadingIndicator = true;
+      this.getPatients();
     });
+  }
+
+  getPatients() {
+    this.patientService.getPatients().subscribe(
+      result => {
+        this.rows = result;
+        this.loadingIndicator = false;
+      }
+    );
   }
 
 }

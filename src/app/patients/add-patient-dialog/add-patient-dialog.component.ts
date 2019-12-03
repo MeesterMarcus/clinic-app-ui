@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import {PatientService} from '../../services/patient.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class AddPatientDialogComponent implements OnInit {
     phone: new FormControl('')
   });
 
-  constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>) {
+  constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>, private patientService: PatientService) {
   }
 
   ngOnInit() {
@@ -37,6 +38,11 @@ export class AddPatientDialogComponent implements OnInit {
 
   onSubmit() {
     console.log(this.patientForm.value);
+    this.patientService.addPatient(this.patientForm.value).subscribe(
+      result => {
+        console.log(result);
+      }
+    );
     this.dialogRef.close();
   }
 
