@@ -3,6 +3,7 @@ import { ColumnMode} from '@swimlane/ngx-datatable';
 import {MatDialog} from '@angular/material/dialog';
 import {AddPatientDialogComponent} from '../patients/add-patient-dialog/add-patient-dialog.component';
 import {AddAppointmentDialogComponent} from './add-appointment-dialog/add-appointment-dialog.component';
+import {AppointmentService} from '../services/appointment.service';
 
 
 @Component({
@@ -19,9 +20,10 @@ export class AppointmentsComponent implements OnInit {
 
   rows: {};
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private apptService: AppointmentService) { }
 
   ngOnInit() {
+    this.getAppts();
   }
 
   addAppt(): void {
@@ -37,7 +39,15 @@ export class AppointmentsComponent implements OnInit {
   }
 
   getAppts() {
-    this.loadingIndicator = false;
+    this.apptService.getAppts().subscribe(
+      (result: Array<any>) => {
+        result.forEach(item => {
+          item.fullName = item.patientEntity.firstName + ' ' + item.patientEntity.lastName;
+        });
+        this.rows = result;
+        this.loadingIndicator = false;
+      }
+    );
   }
 
 }
