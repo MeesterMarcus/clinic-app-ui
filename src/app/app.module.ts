@@ -12,6 +12,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddPatientDialogComponent } from './patients/add-patient-dialog/add-patient-dialog.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PatientService} from './services/patient.service';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {PatientService} from './services/patient.service';
     AppComponent,
     PatientsComponent,
     PageNotFoundComponent,
-    AddPatientDialogComponent
+    AddPatientDialogComponent,
+    AppointmentsComponent,
+    PatientDetailComponent
   ],
   imports: [
     NgxDatatableModule,
