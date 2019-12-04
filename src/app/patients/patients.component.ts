@@ -1,9 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { ColumnMode} from '@swimlane/ngx-datatable';
 import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog.component';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {PatientService} from '../services/patient.service';
-import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-home',

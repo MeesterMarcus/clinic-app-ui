@@ -4,12 +4,14 @@ import {PatientsComponent} from './patients/patients.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {PatientDetailComponent} from './patient-detail/patient-detail.component';
 import {AppointmentsComponent} from './appointments/appointments.component';
+import {SettingsComponent} from './settings/settings.component';
 
 
 const appRoutes: Routes = [
   { path: 'patients', component: PatientsComponent },
   { path: 'patients/{id}', component: PatientDetailComponent },
   { path: 'appointments', component: AppointmentsComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: '',   redirectTo: '/patients', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

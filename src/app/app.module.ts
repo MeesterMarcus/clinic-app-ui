@@ -14,6 +14,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {PatientService} from './services/patient.service';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { AddAppointmentDialogComponent } from './appointments/add-appointment-dialog/add-appointment-dialog.component';
+import {AppointmentService} from './services/appointment.service';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
     PageNotFoundComponent,
     AddPatientDialogComponent,
     AppointmentsComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    AddAppointmentDialogComponent,
+    SettingsComponent
   ],
   imports: [
     NgxDatatableModule,
@@ -35,9 +40,13 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
     HttpClientModule
   ],
   providers: [
-    PatientService
+    PatientService,
+    AppointmentService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddPatientDialogComponent]
+  entryComponents: [
+    AddPatientDialogComponent,
+    AddAppointmentDialogComponent
+  ]
 })
 export class AppModule { }
