@@ -1,1 +1,34 @@
-<p>patient-detail works!</p>
+<mat-toolbar *ngIf="patient">Patient Information</mat-toolbar>
+
+<div class="custom-container" *ngIf="patient">
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><h1 class="mat-h1">{{patient.firstName}} {{patient.lastName}}</h1></mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="margin-left:15px;">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="mat-h2">Personal Details:</h2>
+              <h3 class="mat-h4">Id: {{patient.id}}</h3>
+              <h3 class="mat-h4">Address: {{patient.address}}</h3>
+              <h3 class="mat-h4">City: {{patient.city}}</h3>
+              <h3 class="mat-h4">State: {{patient.state}}</h3>
+              <h3 class="mat-h4">Zip: {{patient.zip}}</h3>
+              <h3 class="mat-h4">Email {{patient.email}}</h3>
+              <h3 class="mat-h4">Phone: {{patient.phone}}</h3>
+            </div>
+            <div class="col-md-6">
+              <h2 class="mat-h2">Diagnosis:</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="mat-h2">Notes:</h2>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+
+</div>

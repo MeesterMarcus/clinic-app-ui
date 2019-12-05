@@ -3,6 +3,7 @@ import { ColumnMode} from '@swimlane/ngx-datatable';
 import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {PatientService} from '../services/patient.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class PatientsComponent implements OnInit {
 
   rows: {};
 
-  constructor(public dialog: MatDialog, private patientService: PatientService) { }
+  constructor(public dialog: MatDialog, private patientService: PatientService, private router: Router) { }
 
   ngOnInit() {
     this.getPatients();
@@ -43,6 +44,13 @@ export class PatientsComponent implements OnInit {
         this.loadingIndicator = false;
       }
     );
+  }
+
+  onActivate(event) {
+    if (event.type === 'click') {
+      console.log(event.row);
+      this.router.navigate(['/patients/', event.row.id]);
+    }
   }
 
 }

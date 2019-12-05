@@ -1,9 +1,9 @@
 <mat-toolbar>Patients</mat-toolbar>
 
-<div class="container">
+<div class="custom-container">
   <button mat-raised-button color="primary" style="margin:5px;" (click)="addPatient()">Add Patient</button>
   <div>
-    <ngx-datatable class="material" style="width:80%"
+    <ngx-datatable class="material" style="width:80%" (activate)="onActivate($event)"
       [rows]="rows"
       [loadingIndicator]="loadingIndicator"
       [columnMode]="ColumnMode.force"

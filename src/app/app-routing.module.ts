@@ -9,7 +9,7 @@ import {SettingsComponent} from './settings/settings.component';
 
 const appRoutes: Routes = [
   { path: 'patients', component: PatientsComponent },
-  { path: 'patients/{id}', component: PatientDetailComponent },
+  { path: 'patients/:id', component: PatientDetailComponent },
   { path: 'appointments', component: AppointmentsComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '',   redirectTo: '/patients', pathMatch: 'full' },
