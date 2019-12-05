@@ -13,7 +13,11 @@
                    [reorderable]="reorderable">
 
       <ngx-datatable-column name="Patient Name" prop="fullName"></ngx-datatable-column>
-      <ngx-datatable-column name="Date" prop="dateTime"></ngx-datatable-column>
+      <ngx-datatable-column name="Date" prop="dateTime">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.dateTime | date:'medium'}}
+        </ng-template>
+      </ngx-datatable-column>
       <ngx-datatable-column name="Appointment Type" prop="apptType"></ngx-datatable-column>
 
     </ngx-datatable>

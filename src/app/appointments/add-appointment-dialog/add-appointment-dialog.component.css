@@ -1,0 +1,20 @@
+.example-form {
+  min-width: 150px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.quarter-width {
+  width: 25%;
+}
+
+td {
+  padding-right: 8px;
+}
