@@ -1,16 +1,25 @@
 <mat-toolbar>Patients</mat-toolbar>
 
 <div class="custom-container">
-  <button mat-raised-button color="primary" style="margin:5px;" (click)="addPatient()">Add Patient</button>
+  <div class="row">
+    <div class="col-md-6">
+      <button mat-raised-button color="primary" style="margin:5px;" (click)="addPatient()">Add Patient</button>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field>
+        <input type="text" (keyup)="updateFilter($event)" matInput placeholder="Search" >
+      </mat-form-field>
+    </div>
+  </div>
   <div>
     <ngx-datatable class="material" style="width:80%" (activate)="onActivate($event)"
-      [rows]="rows"
-      [loadingIndicator]="loadingIndicator"
-      [columnMode]="ColumnMode.force"
-      headerHeight="50"
-      footerHeight="50"
-      rowHeight="auto"
-      [reorderable]="reorderable">
+                   [rows]="rows"
+                   [loadingIndicator]="loadingIndicator"
+                   [columnMode]="ColumnMode.force"
+                   headerHeight="50"
+                   footerHeight="50"
+                   rowHeight="auto"
+                   [reorderable]="reorderable">
 
       <ngx-datatable-column name="Patient Id" prop="id"></ngx-datatable-column>
       <ngx-datatable-column name="First Name"></ngx-datatable-column>
