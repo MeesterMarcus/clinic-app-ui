@@ -2,6 +2,8 @@
 
 <div class="custom-container">
   <button mat-raised-button color="primary" style="margin:5px;" (click)="addAppt()">Add Appointment</button>
+  <button mat-raised-button color="primary" style="margin:5px;" (click)="clear()">Clear Completed</button>
+
   <div>
     <ngx-datatable class="material" style="width:80%"
                    [rows]="rows"
@@ -23,7 +25,7 @@
       <ngx-datatable-column name="Complete" prop="complete">
         <ng-template let-row="row" ngx-datatable-cell-template>
           <button *ngIf="row.complete !== 'Y'" mat-stroked-button color="primary" (click)="markComplete(row)">Mark Complete</button>
-          <button *ngIf="row.complete === 'Y'"  mat-stroked-button color="accent" [disabled]="true">Complete</button>
+          <span *ngIf="row.complete === 'Y'">Completed</span>
         </ng-template>
       </ngx-datatable-column>
 

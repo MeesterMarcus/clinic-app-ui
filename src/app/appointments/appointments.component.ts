@@ -54,7 +54,23 @@ export class AppointmentsComponent implements OnInit {
   markComplete(row) {
     console.log('complete: ', row);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: {id: row.id}
+      data: {
+        id: row.id,
+        type: 'complete'
+      }
+    }).afterClosed().subscribe(
+      result => {
+        this.loadingIndicator = true;
+        this.getAppts();
+      }
+    );
+  }
+
+  clear() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        type: 'clear'
+      }
     }).afterClosed().subscribe(
       result => {
         this.loadingIndicator = true;
