@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddPatientDialogComponent} from '../patients/add-patient-dialog/add-patient-dialog.component';
 import {AddAppointmentDialogComponent} from './add-appointment-dialog/add-appointment-dialog.component';
 import {AppointmentService} from '../services/appointment.service';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -46,6 +47,18 @@ export class AppointmentsComponent implements OnInit {
         });
         this.rows = result;
         this.loadingIndicator = false;
+      }
+    );
+  }
+
+  markComplete(row) {
+    console.log('complete: ', row);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {id: row.id}
+    }).afterClosed().subscribe(
+      result => {
+        this.loadingIndicator = true;
+        this.getAppts();
       }
     );
   }

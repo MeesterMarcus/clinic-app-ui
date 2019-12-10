@@ -16,4 +16,8 @@ export class AppointmentService {
     return this.http.post('api/addAppt', appt);
   }
 
+  completeAppt(apptId) {
+    return this.http.post('api/complete', apptId);
+  }
+
 }
