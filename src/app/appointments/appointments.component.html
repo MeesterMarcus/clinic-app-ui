@@ -5,8 +5,7 @@
   <button mat-raised-button color="secondary" style="margin:5px;" (click)="clear()">Clear Completed</button>
 
   <div>
-    <ngx-datatable class="material" style="width:80%"
-                    #table
+    <ngx-datatable class="material striped" style="width:80%"
                    [rows]="rows"
                    [loadingIndicator]="loadingIndicator"
                    [columnMode]="ColumnMode.force"
