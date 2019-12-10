@@ -1,0 +1,36 @@
+<mat-toolbar *ngIf="appt">Appointment Information</mat-toolbar>
+
+<div class="custom-container" *ngIf="appt">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><h1 class="mat-h1">{{patient.firstName}} {{patient.lastName}}</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="margin-left:15px;">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="mat-h2">Appointment:</h2>
+          <h3 class="mat-h4">Time: {{appt.dateTime | date:'medium'}}</h3>
+          <h3 class="mat-h4">Type: {{appt.apptType}}</h3>
+          <h3 class="mat-h4">Completed: {{appt.complete}}</h3>
+        </div>
+        <div class="col-md-6">
+          <h2 class="mat-h2">Notes:</h2>
+          <h3 class="mat-h4">{{appt.notes}}</h3>
+        </div>
+        <div class="col-md-6">
+          <h2 class="mat-h2">Patient Details:</h2>
+          <h3 class="mat-h4">Id: {{patient.id}}</h3>
+          <h3 class="mat-h4">Address: {{patient.address}}</h3>
+          <h3 class="mat-h4">City: {{patient.city}}</h3>
+          <h3 class="mat-h4">State: {{patient.state}}</h3>
+          <h3 class="mat-h4">Zip: {{patient.zip}}</h3>
+          <h3 class="mat-h4">Email {{patient.email}}</h3>
+          <h3 class="mat-h4">Phone: {{patient.phone}}</h3>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>

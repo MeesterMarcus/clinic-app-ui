@@ -12,6 +12,10 @@ export class AppointmentService {
     return this.http.get('api/getAppts');
   }
 
+  getApptById(id) {
+    return this.http.get('api/getAppt/' + id);
+  }
+
   addAppt(appt) {
     return this.http.post('api/addAppt', appt);
   }

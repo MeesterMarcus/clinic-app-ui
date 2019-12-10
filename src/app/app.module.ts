@@ -13,12 +13,13 @@ import { AddPatientDialogComponent } from './patients/add-patient-dialog/add-pat
 import {HttpClientModule} from '@angular/common/http';
 import {PatientService} from './services/patient.service';
 import { AppointmentsComponent } from './appointments/appointments.component';
-import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
 import { AddAppointmentDialogComponent } from './appointments/add-appointment-dialog/add-appointment-dialog.component';
 import {AppointmentService} from './services/appointment.service';
 import { SettingsComponent } from './settings/settings.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { AppointmentDetailComponent } from './appointments/appointment-detail/appointment-detail.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     PatientDetailComponent,
     AddAppointmentDialogComponent,
     SettingsComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AppointmentDetailComponent
   ],
   imports: [
     NgxDatatableModule,

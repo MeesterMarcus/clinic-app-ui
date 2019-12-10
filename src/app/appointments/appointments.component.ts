@@ -5,6 +5,7 @@ import {AddPatientDialogComponent} from '../patients/add-patient-dialog/add-pati
 import {AddAppointmentDialogComponent} from './add-appointment-dialog/add-appointment-dialog.component';
 import {AppointmentService} from '../services/appointment.service';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class AppointmentsComponent implements OnInit {
 
   rows: {};
 
-  constructor(public dialog: MatDialog, private apptService: AppointmentService) { }
+  constructor(public dialog: MatDialog, private apptService: AppointmentService, private router: Router) { }
 
   ngOnInit() {
     this.getAppts();
@@ -77,6 +78,10 @@ export class AppointmentsComponent implements OnInit {
         this.getAppts();
       }
     );
+  }
+
+  viewDetails(row) {
+    this.router.navigate(['/appointments/', row.id]);
   }
 
 }

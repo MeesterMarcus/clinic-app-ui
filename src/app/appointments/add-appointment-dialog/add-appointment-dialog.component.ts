@@ -44,7 +44,10 @@ export class AddAppointmentDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    this.apptService.addAppt(this.apptForm.value).subscribe(
+    let appt = this.apptForm.value;
+    appt.complete = 'N';
+    console.log(appt);
+    this.apptService.addAppt(appt).subscribe(
       result => {
         console.log(result);
       }

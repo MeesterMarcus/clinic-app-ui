@@ -76,4 +76,9 @@ export class PatientsComponent implements OnInit {
     });
   }
 
+  viewDetails(row) {
+    console.log(row);
+    this.router.navigate(['/patients/', row.id]);
+  }
+
 }

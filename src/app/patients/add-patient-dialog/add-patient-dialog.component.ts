@@ -19,7 +19,8 @@ export class AddPatientDialogComponent implements OnInit {
     state: new FormControl(''),
     zip: new FormControl(''),
     email: new FormControl(''),
-    phone: new FormControl('')
+    phone: new FormControl(''),
+    notes: new FormControl('')
   });
 
   constructor(public dialogRef: MatDialogRef<AddPatientDialogComponent>, private patientService: PatientService) {
