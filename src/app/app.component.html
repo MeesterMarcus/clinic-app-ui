@@ -2,15 +2,26 @@
 <mat-sidenav-container class="custom-container">
   <mat-sidenav mode="side" opened>
     <mat-list>
-      <mat-list-item> Clinic Application </mat-list-item>
       <mat-list-item>
-        <button mat-button [routerLink]="['/patients']">Patients</button>
+        Clinic Application
       </mat-list-item>
       <mat-list-item>
-        <button mat-button [routerLink]="['/appointments']">Appointments</button>
+        <button mat-button [routerLink]="['/patients']">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">supervisor_account</mat-icon>
+          Patients
+        </button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button [routerLink]="['/settings']">Settings</button>
+        <button mat-button [routerLink]="['/appointments']">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">schedule</mat-icon>
+          Appointments
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button [routerLink]="['/settings']">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon>
+          Settings
+        </button>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>

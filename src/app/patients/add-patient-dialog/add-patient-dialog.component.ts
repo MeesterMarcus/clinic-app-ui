@@ -45,7 +45,7 @@ export class AddPatientDialogComponent implements OnInit {
         console.log(result);
       }
     );
-    this.dialogRef.close();
+    this.dialogRef.close({response: 'submitted'});
   }
 
 }

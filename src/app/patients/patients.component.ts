@@ -34,7 +34,9 @@ export class PatientsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this._snackBar.open('Successfully added patient', 'Ok', {duration: 2000});
+      if (result.response === 'submitted') {
+        this._snackBar.open('Successfully added patient', 'Ok', {duration: 2000});
+      }
       console.log('The dialog was closed');
       this.loadingIndicator = true;
       this.getPatients();
