@@ -52,7 +52,7 @@ export class AddAppointmentDialogComponent implements OnInit {
         console.log(result);
       }
     );
-    this.dialogRef.close();
+    this.dialogRef.close({response: 'submit'});
   }
 
   displayFn(val) {

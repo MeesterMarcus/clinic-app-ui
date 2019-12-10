@@ -20,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AppointmentDetailComponent } from './appointments/appointment-detail/appointment-detail.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { AppointmentDetailComponent } from './appointments/appointment-detail/ap
     AppRoutingModule,
     HttpClientModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    FormsModule
   ],
   providers: [
     PatientService,

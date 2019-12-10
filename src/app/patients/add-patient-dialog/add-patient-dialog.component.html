@@ -1,13 +1,22 @@
+<h1 mat-dialog-title>Add Patient</h1>
+
+
 <form class="example-form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput formControlName="firstName" placeholder="First name">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput formControlName="lastName" placeholder="Last Name">
-    </mat-form-field></td>
-  </tr></table>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="firstName" placeholder="First name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="lastName" placeholder="Last Name">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
   <p>
     <mat-form-field class="example-full-width">
@@ -15,18 +24,26 @@
     </mat-form-field>
   </p>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width">
-      <input matInput formControlName="city" placeholder="City">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput formControlName="state" placeholder="State">
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width">
-      <input matInput formControlName="zip" #postalCode maxlength="5" placeholder="Postal Code">
-      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-    </mat-form-field></td>
-  </tr></table>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="city" placeholder="City">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="state" placeholder="State">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="zip" #postalCode maxlength="5" placeholder="Postal Code">
+          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
 
   <p>
     <mat-form-field class="example-full-width">
@@ -45,6 +62,10 @@
     </mat-form-field>
   </p>
 
-  <button mat-raised-button type="button" style="margin-right:10px;" (click)="closeDialog()" color="secondary">Cancel</button>
-  <button mat-raised-button type="submit" color="primary">Submit</button>
+  <div mat-dialog-actions align="end" mat-dialog-actions>
+    <button mat-raised-button type="button" style="margin-right:10px;" (click)="closeDialog()" color="secondary">
+      Cancel
+    </button>
+    <button mat-raised-button type="submit" color="primary">Submit</button>
+  </div>
 </form>

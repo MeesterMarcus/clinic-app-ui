@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="patient">Patient Information</mat-toolbar>
+<mat-toolbar *ngIf="patient" color="primary">Patient Information</mat-toolbar>
 
 <div class="custom-container" *ngIf="patient">
 
@@ -20,7 +20,12 @@
             </div>
             <div class="col-md-6">
               <h2 class="mat-h2">Notes:</h2>
-              <h3 class="mat-h4">{{patient.notes}}</h3>
+              <mat-form-field style="width:60%; height:60%">
+                <textarea matInput [(ngModel)]="patient.notes" style="min-height:100px" placeholder="Leave a comment"></textarea>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="accent" (click)="save()">Save Note</button>
+              </div>
             </div>
 <!--            <div class="col-md-6">-->
 <!--              <h2 class="mat-h2">Diagnosis:</h2>-->

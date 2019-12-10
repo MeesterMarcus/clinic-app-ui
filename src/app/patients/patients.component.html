@@ -1,12 +1,12 @@
-<mat-toolbar>Patients</mat-toolbar>
+<mat-toolbar color="primary">Patients</mat-toolbar>
 
 <div class="custom-container">
   <div class="row">
     <div class="col-md-6">
-      <button mat-raised-button color="primary" style="margin:5px;" (click)="addPatient()">Add Patient</button>
+      <button mat-raised-button color="accent" style="margin:5px;" (click)="addPatient()">Add Patient</button>
     </div>
     <div class="col-md-6">
-      <mat-form-field>
+      <mat-form-field style="width:50%">
         <input type="text" (keyup)="updateFilter($event)" matInput placeholder="Search" >
       </mat-form-field>
     </div>

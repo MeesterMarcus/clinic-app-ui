@@ -4,6 +4,7 @@ import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog
 import {MatDialog} from '@angular/material/dialog';
 import {PatientService} from '../services/patient.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class PatientsComponent implements OnInit {
   temp = [];
   columnsWithSearch: string[] = [];
 
-  constructor(public dialog: MatDialog, private patientService: PatientService, private router: Router) { }
+  constructor(public dialog: MatDialog, private patientService: PatientService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getPatients();
@@ -33,6 +34,7 @@ export class PatientsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this._snackBar.open('Successfully added patient', 'Ok', {duration: 2000});
       console.log('The dialog was closed');
       this.loadingIndicator = true;
       this.getPatients();

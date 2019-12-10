@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="appt">Appointment Information</mat-toolbar>
+<mat-toolbar *ngIf="appt" color="primary">Appointment Information</mat-toolbar>
 
 <div class="custom-container" *ngIf="appt">
 
@@ -12,11 +12,21 @@
           <h2 class="mat-h2">Appointment:</h2>
           <h3 class="mat-h4">Time: {{appt.dateTime | date:'medium'}}</h3>
           <h3 class="mat-h4">Type: {{appt.apptType}}</h3>
-          <h3 class="mat-h4">Completed: {{appt.complete}}</h3>
+          <h3 class="mat-h4">
+            <mat-chip-list style="display:inline-block">
+              <mat-chip color="primary" selected *ngIf="appt.complete === 'Y'">Completed</mat-chip>
+              <mat-chip color="primary" selected *ngIf="appt.complete === 'N'">Incomplete</mat-chip>
+            </mat-chip-list>
+          </h3>
         </div>
         <div class="col-md-6">
           <h2 class="mat-h2">Notes:</h2>
-          <h3 class="mat-h4">{{appt.notes}}</h3>
+          <mat-form-field style="width:60%; height:60%">
+            <textarea matInput [(ngModel)]="appt.notes" style="min-height:100px" placeholder="Leave a comment"></textarea>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="accent" (click)="save()">Save Note</button>
+          </div>
         </div>
         <div class="col-md-6">
           <h2 class="mat-h2">Patient Details:</h2>

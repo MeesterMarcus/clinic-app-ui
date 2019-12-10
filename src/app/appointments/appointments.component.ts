@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ColumnMode} from '@swimlane/ngx-datatable';
+import {Component, OnInit} from '@angular/core';
+import {ColumnMode} from '@swimlane/ngx-datatable';
 import {MatDialog} from '@angular/material/dialog';
 import {AddPatientDialogComponent} from '../patients/add-patient-dialog/add-patient-dialog.component';
 import {AddAppointmentDialogComponent} from './add-appointment-dialog/add-appointment-dialog.component';
 import {AppointmentService} from '../services/appointment.service';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class AppointmentsComponent implements OnInit {
 
   rows: {};
 
-  constructor(public dialog: MatDialog, private apptService: AppointmentService, private router: Router) { }
+  constructor(public dialog: MatDialog, private apptService: AppointmentService, private router: Router, private _snackBar: MatSnackBar) {
+  }
 
   ngOnInit() {
     this.getAppts();
@@ -34,7 +36,10 @@ export class AppointmentsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log(result);
+      if (result.response === 'submit') {
+        this._snackBar.open('Successfully added appointment', 'Ok', {duration: 2000});
+      }
       this.loadingIndicator = true;
       this.getAppts();
     });
@@ -61,6 +66,10 @@ export class AppointmentsComponent implements OnInit {
       }
     }).afterClosed().subscribe(
       result => {
+        console.log(result);
+        if (result.response === 'completed') {
+          this._snackBar.open('Appointment marked complete', 'Ok', {duration: 2000});
+        }
         this.loadingIndicator = true;
         this.getAppts();
       }
@@ -74,6 +83,11 @@ export class AppointmentsComponent implements OnInit {
       }
     }).afterClosed().subscribe(
       result => {
+        console.log(result);
+        if (result.response === 'cleared') {
+          this._snackBar.open('Appointment cleared', 'Ok', {duration: 2000});
+
+        }
         this.loadingIndicator = true;
         this.getAppts();
       }

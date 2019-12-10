@@ -45,7 +45,7 @@ export class ConfirmDialogComponent implements OnInit {
   completeAppt() {
     this.apptService.completeAppt(this.id).subscribe(
       result => {
-        this.dialogRef.close();
+        this.dialogRef.close({response: 'completed'});
       }
     );
   }
@@ -53,7 +53,7 @@ export class ConfirmDialogComponent implements OnInit {
   clearAppts() {
     this.apptService.clear().subscribe(
       result => {
-        this.dialogRef.close();
+        this.dialogRef.close({response: 'cleared'});
       }
     );
   }
