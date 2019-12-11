@@ -37,11 +37,11 @@ export class AppointmentsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      if (result.response === 'submit') {
+      if (result && result.response === 'submit') {
         this._snackBar.open('Successfully added appointment', 'Ok', {duration: 2000});
+        this.loadingIndicator = true;
+        this.getAppts();
       }
-      this.loadingIndicator = true;
-      this.getAppts();
     });
   }
 

@@ -34,12 +34,12 @@ export class PatientsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.response === 'submitted') {
+      if (result && result.response === 'submitted') {
         this._snackBar.open('Successfully added patient', 'Ok', {duration: 2000});
+        console.log('The dialog was closed');
+        this.loadingIndicator = true;
+        this.getPatients();
       }
-      console.log('The dialog was closed');
-      this.loadingIndicator = true;
-      this.getPatients();
     });
   }
 

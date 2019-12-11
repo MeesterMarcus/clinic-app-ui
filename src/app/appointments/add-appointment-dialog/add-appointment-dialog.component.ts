@@ -3,6 +3,8 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {AppointmentService} from '../../services/appointment.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {PatientService} from '../../services/patient.service';
+import {Observable} from 'rxjs';
+import {filter, map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-appointment-dialog',
@@ -12,6 +14,9 @@ import {PatientService} from '../../services/patient.service';
 export class AddAppointmentDialogComponent implements OnInit {
 
   patients = [];
+
+  filteredOptions: Observable<Array<any>>;
+
 
   apptForm = new FormGroup({
     patientEntity: new FormControl(''),
@@ -30,9 +35,21 @@ export class AddAppointmentDialogComponent implements OnInit {
           item.fullName = item.firstName + ' ' + item.lastName;
         });
         this.patients = result;
+        this.filteredOptions = this.apptForm.valueChanges
+          .pipe(
+            startWith(''),
+            map(value => this._filter(value))
+          );
 
       }
     );
+  }
+
+  private _filter(value: any): Array<any> {
+    if (value.patientEntity) {
+      const filterValue = value.patientEntity.toString().toLowerCase();
+      return this.patients.filter(option => option.fullName.toLowerCase().includes(filterValue));
+    }
   }
 
   onNoClick(): void {
