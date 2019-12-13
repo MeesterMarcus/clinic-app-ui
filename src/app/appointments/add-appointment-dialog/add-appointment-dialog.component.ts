@@ -19,7 +19,7 @@ export class AddAppointmentDialogComponent implements OnInit {
 
 
   apptForm = new FormGroup({
-    patientEntity: new FormControl(''),
+    patient: new FormControl(''),
     dateTime: new FormControl(''),
     apptType: new FormControl(''),
     notes: new FormControl('')
@@ -46,8 +46,8 @@ export class AddAppointmentDialogComponent implements OnInit {
   }
 
   private _filter(value: any): Array<any> {
-    if (value.patientEntity) {
-      const filterValue = value.patientEntity.toString().toLowerCase();
+    if (value.patient) {
+      const filterValue = value.patient.toString().toLowerCase();
       return this.patients.filter(option => option.fullName.toLowerCase().includes(filterValue));
     }
   }

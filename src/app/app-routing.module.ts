@@ -6,15 +6,17 @@ import {PatientDetailComponent} from './patients/patient-detail/patient-detail.c
 import {AppointmentsComponent} from './appointments/appointments.component';
 import {SettingsComponent} from './settings/settings.component';
 import {AppointmentDetailComponent} from './appointments/appointment-detail/appointment-detail.component';
+import {LoginComponent} from './login/login.component';
 
 
 const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'patients', component: PatientsComponent },
   { path: 'patients/:id', component: PatientDetailComponent },
   { path: 'appointments', component: AppointmentsComponent },
   { path: 'appointments/:id', component: AppointmentDetailComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: '',   redirectTo: '/patients', pathMatch: 'full' },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

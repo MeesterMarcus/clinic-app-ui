@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">Clinic App</mat-toolbar>
+
+<div >
+  <div class="row" style="margin:50px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <mat-card>
+        <mat-card-content align="center">
+          <mat-card-title align="center">Login</mat-card-title>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field style="width:80%">
+              <input matInput formControlName="username" placeholder="Username">
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width:80%">
+              <input matInput formControlName="password" type="password" placeholder="Password">
+            </mat-form-field>
+            <br>
+            <div mat-dialog-actions align="right">
+              <button mat-raised-button color="primary" type="submit" style="margin-right:10%;">Login</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+</div>

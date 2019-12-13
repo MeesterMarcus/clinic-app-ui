@@ -19,7 +19,7 @@ export class AppointmentDetailComponent implements OnInit {
     this.appointmentService.getApptById(this.route.snapshot.paramMap.get('id')).subscribe(
       result => {
         this.appt = result;
-        this.patient = this.appt.patientEntity;
+        this.patient = this.appt.patient;
         console.log(this.appt);
         console.log(this.patient);
       }

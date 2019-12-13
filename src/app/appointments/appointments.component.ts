@@ -49,7 +49,7 @@ export class AppointmentsComponent implements OnInit {
     this.apptService.getAppts().subscribe(
       (result: Array<any>) => {
         result.forEach(item => {
-          item.fullName = item.patientEntity.firstName + ' ' + item.patientEntity.lastName;
+          item.fullName = item.patient.firstName + ' ' + item.patient.lastName;
         });
         this.rows = result;
         this.loadingIndicator = false;

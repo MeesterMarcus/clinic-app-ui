@@ -1,7 +1,7 @@
 
 <mat-sidenav-container class="custom-container">
-  <mat-sidenav mode="side" opened>
-    <mat-list>
+  <mat-sidenav mode="side" [opened]="isLoggedIn()">
+    <mat-list >
       <mat-list-item>
         Clinic Application
       </mat-list-item>

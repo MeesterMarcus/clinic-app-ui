@@ -21,6 +21,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { AppointmentDetailComponent } from './appointments/appointment-detail/appointment-detail.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import {AuthService} from './services/auth.service';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { FormsModule } from '@angular/forms';
     AddAppointmentDialogComponent,
     SettingsComponent,
     ConfirmDialogComponent,
-    AppointmentDetailComponent
+    AppointmentDetailComponent,
+    LoginComponent
   ],
   imports: [
     NgxDatatableModule,
@@ -50,7 +53,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     PatientService,
-    AppointmentService
+    AppointmentService,
+    AuthService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
