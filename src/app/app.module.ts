@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AddPatientDialogComponent } from './patients/add-patient-dialog/add-patient-dialog.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {PatientService} from './services/patient.service';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { PatientDetailComponent } from './patients/patient-detail/patient-detail.component';
@@ -23,7 +23,7 @@ import { AppointmentDetailComponent } from './appointments/appointment-detail/ap
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {AuthService} from './services/auth.service';
-
+import {HttpInterceptorService} from './services/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import {AuthService} from './services/auth.service';
   providers: [
     PatientService,
     AppointmentService,
-    AuthService
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -63,4 +64,8 @@ import {AuthService} from './services/auth.service';
     ConfirmDialogComponent
   ]
 })
+
+
 export class AppModule { }
+
+

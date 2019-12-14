@@ -10,21 +10,31 @@ import {AuthService} from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    username: new FormControl(''),
+  successMessage: string;
+  invalidLogin = false;
+  loginSuccess = false;
+
+  credentials = new FormGroup({
+    email: new FormControl(''),
     password: new FormControl('')
   });
 
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.setLoggedIn(false);
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-    this.authService.setLoggedIn(true);
-    this.router.navigate(['patients']);
+    const credentials = this.credentials.value;
+    this.authService.authenticationService(credentials.email, credentials.password).subscribe((result) => {
+      this.invalidLogin = false;
+      this.loginSuccess = true;
+      this.successMessage = 'Login Successful.';
+      this.router.navigate(['/patients']);
+    }, () => {
+      this.invalidLogin = true;
+      this.loginSuccess = false;
+    });
   }
 
 }

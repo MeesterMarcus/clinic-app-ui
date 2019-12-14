@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {PatientService} from '../services/patient.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -21,11 +22,10 @@ export class PatientsComponent implements OnInit {
   temp = [];
   columnsWithSearch: string[] = [];
 
-  constructor(public dialog: MatDialog, private patientService: PatientService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(public dialog: MatDialog, private patientService: PatientService, private router: Router, private _snackBar: MatSnackBar,  private authService: AuthService) { }
 
   ngOnInit() {
     this.getPatients();
-
   }
 
   addPatient(): void {
@@ -84,5 +84,6 @@ export class PatientsComponent implements OnInit {
     console.log(row);
     this.router.navigate(['/patients/', row.id]);
   }
+
 
 }

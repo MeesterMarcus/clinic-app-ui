@@ -10,11 +10,16 @@ import {AuthService} from './services/auth.service';
 export class AppComponent {
   title = 'clinic-app';
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+    return this.authService.isUserLoggedIn();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }
